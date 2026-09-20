@@ -15,10 +15,24 @@ class BMIModel {
     required this.age,
   });
 
-  //
   double get calculateBmi {
     double bmi = (weight / pow(height / 100, 2)).roundToDouble();
     return bmi;
+  }
+
+  String get healthAdvice {
+    switch (resultBmi) {
+      case 'Underweight':
+        return 'Consider consulting a healthcare provider about healthy weight gain strategies.';
+      case 'Normal':
+        return 'Great! Maintain your current lifestyle with balanced diet and regular exercise.';
+      case 'Overweight':
+        return 'Consider a balanced diet and increased physical activity to reach a healthier weight.';
+      case 'Obese':
+        return 'Consult with a healthcare provider for a personalized weight management plan.';
+      default:
+        return 'Consult with a healthcare provider for personalized advice.';
+    }
   }
 
   String get resultBmi {
@@ -45,21 +59,6 @@ class BMIModel {
         return const Color(0xFFF44336);
       default:
         return const Color(0xFF9E9E9E);
-    }
-  }
-
-  String get healthAdvice {
-    switch (resultBmi) {
-      case 'Underweight':
-        return 'Consider consulting a healthcare provider about healthy weight gain strategies.';
-      case 'Normal':
-        return 'Great! Maintain your current lifestyle with balanced diet and regular exercise.';
-      case 'Overweight':
-        return 'Consider a balanced diet and increased physical activity to reach a healthier weight.';
-      case 'Obese':
-        return 'Consult with a healthcare provider for a personalized weight management plan.';
-      default:
-        return 'Consult with a healthcare provider for personalized advice.';
     }
   }
 }
